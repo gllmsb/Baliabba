@@ -1,4 +1,5 @@
 GetProductData();
+// Model
 
 function GetProductData() {
   fetch('https://dummyjson.com/products')
@@ -12,6 +13,7 @@ function GetProductData() {
       console.error('Error fetching product data:', error.message);
     });
 }
+// Controller
 
 function ProductsReceived(productData) {
   console.log(productData);
