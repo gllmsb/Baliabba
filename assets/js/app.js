@@ -1,31 +1,26 @@
-// function fetchProductData() {
-//     const apiUrl = 'https://dummyjson.com/products';
-  
-//     fetch(apiUrl)
-//       .then(response => response.json())
-//       .then(data => {
-//         // Log the received product data
-//         console.log('Product Data:', data);
-//       })
-//       .catch(error => {
-//         console.error('Error fetching product data:', error.message);
-//       });
-//   }
-  
-//   // Call the function to fetch product data
-//   fetchProductData();
+GetProductData();
 
-// code above is from chatgpt
-// code below is from an example given by bo
+function GetProductData() {
+  fetch('https://dummyjson.com/products')
+    .then((result) => {
+      return result.json();
+    })
+    .then((json) => {
+      ProductsReceived(json);
+    })
+    .catch((error) => {
+      console.error('Error fetching product data:', error.message);
+    });
+}
 
-fetch('https://dummyjson.com/products')
-  .then(response => {
-    console.log(response.ok);
-    return response.json();
-  })
-  .then(json => {
-    console.log('Product Data:', json);
-  })
-  .catch(error => {
-    console.error('Error fetching product data:', error.message);
-  });
+function ProductsReceived(productData) {
+  console.log(productData);
+
+  let myProducts = productData.products;
+
+  let myFeaturedProducts = [];
+
+  myFeaturedProducts.push(myProducts[8], myProducts[11], myProducts[19]);
+
+  console.log(myFeaturedProducts);
+}
